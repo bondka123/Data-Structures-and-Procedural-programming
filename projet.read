@@ -1,0 +1,56 @@
+# Problème 1 : Somme des éléments distincts entre deux tableaux
+
+def somme_elements_distincts(tab1, tab2):
+    somme = 0
+
+    # Ajouter les éléments uniques de tab1 qui ne sont pas dans tab2
+    for i in range(len(tab1)):
+        if tab1[i] not in tab2:
+            somme += tab1[i]
+
+    # Ajouter les éléments uniques de tab2 qui ne sont pas dans tab1
+    for j in range(len(tab2)):
+        if tab2[j] not in tab1:
+            somme += tab2[j]
+
+    return somme
+
+# Exemple d'utilisation
+ensemble1 = [3, 1, 7, 9]
+ensemble2 = [2, 4, 1, 9, 3]
+
+resultat = somme_elements_distincts(ensemble1, ensemble2)
+print("Somme des éléments distincts :", resultat)
+
+# Problème 2 : Produit scalaire et vérification d’orthogonalité
+
+# Fonction qui calcule le produit scalaire
+def dot_product(v1, v2):
+    ps = 0
+    for i in range(len(v1)):
+        ps += v1[i] * v2[i]
+    return ps
+
+# Fonction principale pour vérifier l’orthogonalité de n couples de vecteurs
+def verifier_orthogonalite():
+    # Exemple de couples de vecteurs
+    couples = [
+        ([1, 2, -1], [2, -1, 1]),   # produit scalaire = 0 → orthogonaux
+        ([3, 1, 0], [0, 0, 4])      # produit scalaire = 0 → orthogonaux
+    ]
+
+    for i in range(len(couples)):
+        v1 = couples[i][0]
+        v2 = couples[i][1]
+        ps = dot_product(v1, v2)
+
+        print(f"Couple {i+1} :")
+        print("Vecteur 1 :", v1)
+        print("Vecteur 2 :", v2)
+        print("Produit scalaire =", ps)
+
+        if ps == 0:
+            print("→ Les vecteurs sont orthogonaux.\n")
+        else:
+            print("→ Les vecteurs ne sont pas orthogonaux.\n")
+
